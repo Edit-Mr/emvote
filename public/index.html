@@ -9,7 +9,6 @@
         <script src="/socket.io/socket.io.js"></script>
         <link rel="stylesheet" href="style.css" />
         <script src="qrcode.min.js"></script>
-        <!-- <script src="index.js"></script> -->
     </head>
     <body>
         <main class="room">
@@ -41,7 +40,7 @@
                 <a href="https://github.com/Edit-Mr/emvote">credits</a>
             </div>
 
-            <div id="room" class="adminPage">
+            <div id="room" class="userPage">
                 <div class="header">
                     <div>
                         <div class="title">emvote</div>
@@ -59,7 +58,7 @@
                 </div>
                 <div class="name user">
                     <span id="userNameDisplay">=</span>
-                    <button id="editName" onclick="editName"></button>
+                    <button id="editName" onclick="editName()"></button>
                 </div>
                 <div class="percentage admin">
                     <div class="percent" id="percentA" style="--votes: 30">
@@ -93,5 +92,6 @@
                 </div>
             </div>
         </main>
+        <script src="index.js"></script>
     </body>
 </html>
