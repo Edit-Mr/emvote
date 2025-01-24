@@ -1,0 +1,97 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>emvote</title>
+        <script src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="style.css" />
+        <script src="qrcode.min.js"></script>
+        <!-- <script src="index.js"></script> -->
+    </head>
+    <body>
+        <main class="room">
+            <div id="rect1" class="rect"></div>
+            <div id="rect2" class="rect"></div>
+            <div id="home" class="naming">
+                <h1>emvote</h1>
+                <div id="roomCodeDisplay">222</div>
+                <div id="inputContainer">
+                    <div id="roomCodeContainer">
+                        <label for="roomCode"> Enter room code </label>
+                        <input
+                            type="text"
+                            id="roomCode"
+                            placeholder=""
+                            maxlength="6"
+                            required
+                        />
+                    </div>
+                    <div id="userNameContainer">
+                        <label for="userName"> Enter your name </label>
+                        <input type="text" id="userName" required />
+                    </div>
+                </div>
+                <button id="submit" type="submit">Join</button>
+                <button id="createRoomButton">Create New Room</button>
+            </div>
+            <div class="credit">
+                <a href="https://github.com/Edit-Mr/emvote">credits</a>
+            </div>
+
+            <div id="room" class="adminPage">
+                <div class="header">
+                    <div>
+                        <div class="title">emvote</div>
+                        <div id="roomIdDisplay">-</div>
+                    </div>
+                    <button id="leaveRoom" onclick="leaveRoom()"></button>
+                </div>
+                <div class="votes user">
+                    <button class="vote" id="voteA" onclick="select('A')">
+                        A
+                    </button>
+                    <button class="vote" id="voteB" onclick="select('B')">
+                        B
+                    </button>
+                </div>
+                <div class="name user">
+                    <span id="userNameDisplay">=</span>
+                    <button id="editName" onclick="editName"></button>
+                </div>
+                <div class="percentage admin">
+                    <div class="percent" id="percentA" style="--votes: 30">
+                        <h3>A</h3>
+                        <div id="percentA-percent">0%</div>
+                    </div>
+                    <div class="percent" id="percentB" style="--votes: 20">
+                        <h3>B</h3>
+                        <div id="percentB-percent">0%</div>
+                    </div>
+                </div>
+                <div class="list-container admin">
+                    <div class="list-header">
+                        <button class="list-cal" id="list-cal1">A</button
+                        ><button class="list-cal" id="list-cal2">B</button
+                        ><button class="list-cal" id="list-cal3">
+                            Pending
+                        </button>
+                    </div>
+                    <div class="list">
+                        <div id="voteList"></div>
+                    </div>
+                </div>
+                <div class="join-container admin">
+                    <div>
+                        <h3>Join Room</h3>
+                        <div class="baseUrl">vote.emtech.cc/</div>
+                        <div id="roomCode">123456</div>
+                    </div>
+                    <div id="qrCode"></div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

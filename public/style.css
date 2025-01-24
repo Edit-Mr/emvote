@@ -1,0 +1,468 @@
+/** @format */
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("InstrumentSans-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    background-color: #000;
+    color: #fff;
+    font-weight: 700;
+    --background: #1c1c1c;
+    --light-green: #27b33e;
+    --dark-green: #0c4219;
+    --light-blue: #276fb3;
+    --dark-blue: #0c2942;
+}
+
+main {
+    position: relative;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+#home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: calc(100% - 2rem);
+}
+
+#roomCodeDisplay {
+    height: 0rem;
+    transition: height 0.3s;
+    overflow: hidden;
+}
+
+.naming #roomCodeDisplay {
+    height: 2rem;
+}
+
+#inputContainer {
+    position: relative;
+}
+
+#userNameContainer {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.naming #roomCodeContainer {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.naming #userNameContainer {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.rect {
+    width: 50vmin;
+    height: 50vmin;
+    position: absolute;
+    z-index: -1;
+    animation: rotate 10s infinite linear;
+    border-radius: 5vmin;
+    transition: opacity 0.8s;
+}
+
+.room .rect {
+    opacity: 0.2;
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#rect1 {
+    background-color: var(--dark-green);
+    top: -20vmin;
+    left: -10vmin;
+}
+
+#rect2 {
+    background-color: var(--dark-blue);
+    animation-direction: reverse;
+    bottom: -20vmin;
+    right: -10vmin;
+}
+
+#home {
+    background-color: var(--background);
+    padding: 3rem 1rem;
+    border-radius: 1rem;
+}
+
+h1 {
+    font-size: min(3rem, 15vw);
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+input {
+    background-color: #373737;
+    color: #fff;
+    width: 100%;
+    max-width: 15rem;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: none;
+    text-align: center;
+    border-radius: 0.5rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+#home button {
+    margin: auto;
+}
+button {
+    display: block;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+#submit {
+    background-color: #960fd6;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 15rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+#submit:hover {
+    background-color: #7a0cae;
+}
+
+#submit:active {
+    background-color: #5f0a8e;
+}
+
+#createRoomButton {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    outline: transparent;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#createRoomButton:hover,
+a:hover {
+    text-decoration: underline;
+}
+
+.credit {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    transition: opacity 0.3s;
+}
+
+.room #home {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    pointer-events: none;
+}
+.room .credit {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* vote page */
+
+.userPage .admin {
+    display: none;
+}
+
+.adminPage .user {
+    display: none;
+}
+
+#room {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    padding-top: 0;
+    height: 100%;
+}
+
+#room.adminPage {
+    gap: 1rem;
+}
+
+.header {
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    background-color: var(--background);
+    border-radius: 0 0 2rem 2rem;
+    position: relative;
+}
+
+#leaveRoom {
+    position: absolute;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    background: url(exit.svg) no-repeat center center/contain;
+}
+
+.title {
+    font-size: 2rem;
+}
+.votes {
+    display: flex;
+    gap: 2rem;
+    flex-grow: 1;
+    flex-direction: column;
+}
+.vote {
+    width: 100%;
+    flex-grow: 1;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.41);
+    font-size: 30vmin;
+    transition: all 0.3s;
+}
+
+.selected {
+    color: #fff;
+}
+
+#voteA {
+    background-color: var(--dark-green);
+}
+
+#voteB {
+    background-color: var(--dark-blue);
+}
+
+#voteA.selected {
+    background-color: var(--light-green);
+    box-shadow: 0 0 3rem var(--light-green);
+}
+
+#voteB.selected {
+    background-color: var(--light-blue);
+    box-shadow: 0 0 3rem var(--light-blue);
+}
+
+.name {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    background-color: var(--background);
+    border-radius: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#editName {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: url(edit.svg) no-repeat center center/contain;
+}
+
+/* admin */
+
+.percentage {
+    height: 20vh;
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    background-color: var(--background);
+    border-radius: 2rem;
+}
+
+.percent {
+    --votes: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: var(--votes);
+    border-radius: 1.5rem;
+}
+
+.percent h3 {
+    font-size: 8vh;
+}
+
+.list-header {
+    display: flex;
+    padding: 1rem;
+    background-color: var(--background);
+    border-radius: 2rem 2rem 0 0;
+    gap: 0.5rem;
+    width: fit-content;
+    position: relative;
+}
+
+.list-header::after {
+    content: "";
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    bottom: 0;
+    right: -2rem;
+    --percentage: calc(1 / sqrt(2) * 100%);
+    background: radial-gradient(
+        circle,
+        transparent var(--percentage),
+        var(--background) var(--percentage)
+    );
+    background-size: 4rem 4rem;
+    background-position: 0 100%;
+}
+.list-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.list-cal {
+    background-color: #d9d9d9;
+    color: #000;
+    padding: 0.5rem 2rem;
+    border-radius: 10rem;
+    font-size: 1.3rem;
+}
+
+.list {
+    padding: 1rem;
+    background-color: var(--background);
+    border-radius: 0 2rem 2rem 2rem;
+    height: 100%;
+    flex-grow: 1;
+}
+
+#voteList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#percentA {
+    background-color: var(--light-green);
+}
+
+#percentB {
+    background-color: var(--light-blue);
+}
+
+.join-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--background);
+    border-radius: 2rem;
+}
+.join-container h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+#roomCode {
+    font-size: 2rem;
+}
+
+#qrCode {
+    aspect-ratio: 1/1;
+    height: 100%;
+    max-height: 40vh;
+    background-color: #fff;
+    border-radius: 2rem;
+}
+@media (min-aspect-ratio: 1/1) {
+    .votes {
+        flex-direction: row;
+    }
+
+    #room.adminPage {
+        flex-wrap: wrap;
+    }
+    .header {
+        width: unset;
+    }
+
+    .list-container {
+        height: 100%;
+        order: 1;
+    }
+    .join-container {
+        flex-grow: 1;
+        flex-direction: column;
+        text-align: center;
+    }
+    .adminPage  > div {
+        width: 50%;
+    }
+}
+
+@media (max-width: 28.75rem) {
+    .list-header {
+        width: 100%;
+        overflow: scroll;
+    }
+    .list-header::after {
+        display: none;
+    }
+    .list-cal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .list{
+        border-radius: 0 0 2rem 2rem;
+    }
+}
